@@ -1,0 +1,29 @@
+{% extends 'music/base.html' %}
+{% block title %}La Musica{% endblock %}
+{% block body %}
+<br>
+<ul>
+    {% for album in all_albums %}
+
+    <div class="col-md-3"  >
+         <div class="thumbnail" style="background:silver;" >
+                <a href="{% url 'music:details' album.id %}">
+                  <img src="{{ album.album_logo }}" alt="Nature" style="height:280px; width:300px;" >
+                  <div class="caption" >
+                    <h4 class="sahil">{{ album.album_title }}</h4>
+                     <h5> {{ album.artist }} </h5>
+
+                  <a href="{% url 'music:details' album.id %}" class="btn btn-primary btn-sm ">View Details</a>&nbsp;
+                  <a href="{% url 'music:album-delete' album.id %}" class="btn btn-default btn-sm "><span class="glyphicon glyphicon-trash"></span></a> &nbsp;
+                 <a href="#" class="btn btn-default btn-sm "><span class="glyphicon glyphicon-star"></span></a>
+
+                  </div>
+                </a>
+         </div>
+
+    </div>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

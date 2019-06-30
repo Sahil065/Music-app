@@ -1,0 +1,61 @@
+{% extends 'music/base.html' %}
+{% block title %}Album Details{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="col-lg-4">
+    <img src="{{ album.album_logo }}" height="320px" width="280px">
+
+    <h1>{{ album.album_title }}</h1>
+    <h3>{{ album.artist }}</h3>
+    </div>
+    <div class="col-lg-8">
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+
+
+     <div class="header" style="background:grey;height:40px;">
+         <div class="container-fluid">
+         <div class="col-lg-2">
+            sad
+         </div>
+         <div class="col-lg-5">
+             sd
+         </div>
+          <div class="col-lg-5">
+             sd
+         </div>
+         </div>
+
+     </div>
+     <div class="main" style="background:red;height:400px;">
+        {% for song in album.song_set.all %}
+         <span id="song{{ forloop.counter }}" name="song" value="{{ song.id }}"></span>
+            <label for="song{{ forloop.counter }}" style="margin:0px 10px;">
+                {{ song.song_title }}
+                <audio controls  >
+  <source src="{{ song.song_src }}" type="audio/ogg">
+
+</audio>
+
+
+
+            </label><br>
+    <hr>
+         {% endfor %}
+
+
+
+     </div>
+
+
+    <div class="footer" style="background:grey;height:40px;">
+
+    </div>
+
+    </div>
+
+</div>
+{% endblock %}
